@@ -26,8 +26,8 @@ jobs:
 
     - name: Install Python dependencies
       run: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install -r requirements.txt
+        $CONDA/bin/conda env update --file requirements.txt --name base
+        # $CONDA/bin/conda activate base
 
     - name: Test with PyTest
       run: |
