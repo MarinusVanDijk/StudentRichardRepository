@@ -1,5 +1,5 @@
 channels:
-  - defaults
+  - conda-forge
 dependencies:
   - astroid=2.14.2=py310haa95532_0
   - blas=1.0=mkl
