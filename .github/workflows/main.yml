@@ -17,14 +17,12 @@ jobs:
     # Next we need to checkout out repository, and set up Python
     # A 'name' is just an optional label shown in the log - helpful to clarify progress - and can be anything
     - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Setup Conda
-      uses: conda-incubator/setup-miniconda@v3
+    - uses: actions/checkout@v4
+    - uses: conda-incubator/setup-miniconda@v3
       with:
-          auto-update-conda: true
-          python-version: ${{ matrix.python-version }}
-      
+          environment-file: etc/testrequirements.yml
+          miniforge-version: latest
+          
     - name: Set up Python 3.11
       uses: actions/setup-python@v3
       with:
@@ -32,7 +30,7 @@ jobs:
 
     - name: Install Python dependencies
       run: |
-        $CONDA/bin/conda env update --file testrequirements.yml --name base
+        # $CONDA/bin/conda env update --file testrequirements.yml --name base
         # $CONDA/bin/conda activate base
 
     - name: Test with PyTest
